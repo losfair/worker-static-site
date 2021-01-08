@@ -17,9 +17,10 @@ async function handleRequest(request) {
     } else {
         filePath = url.pathname;
     }
-    let file = getFileFromBundle("./res" + filePath);
+    filePath = "./res" + filePath;
+    let file = getFileFromBundle(filePath);
     if(file === null) {
-        return new Response("not found", {
+        return new Response("not found: " + filePath, {
             status: 404,
         });
     } else {
